@@ -1,0 +1,228 @@
+[gd_scene load_steps=18 format=3 uid="uid://bbyydigress0f"]
+
+[ext_resource type="Shader" uid="uid://mx2cbatt1uvv" path="res://scripts/shaders/gradient.gdshader" id="1_1d3j5"]
+[ext_resource type="Script" uid="uid://c67ajrlgb8qvc" path="res://scripts/core/card.gd" id="1_rrr6a"]
+[ext_resource type="Texture2D" uid="uid://hvlpq7uxkck" path="res://assets/codes/peek_deck_code.png" id="2_c5vhu"]
+[ext_resource type="Texture2D" uid="uid://dasevo534req5" path="res://assets/icons/card_icons/PeekDeck.png" id="3_rrr6a"]
+[ext_resource type="Texture2D" uid="uid://dirvje7gjk7l8" path="res://assets/icons/background_icons/logo.png" id="4_c5vhu"]
+[ext_resource type="Texture2D" uid="uid://vvv8y4c656a2" path="res://assets/icons/lock.png" id="6_q7le6"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pemn0"]
+shader = ExtResource("1_1d3j5")
+shader_parameter/speed = 0.3
+shader_parameter/color_a = Color(1, 0.5, 0.8, 1)
+shader_parameter/color_b = Color(0.3, 0.6, 1, 1)
+shader_parameter/color_c = Color(0.3, 0.6, 1, 1)
+shader_parameter/scale = 2.5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8nsiv"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q7le6"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2bh4c"]
+shader = ExtResource("1_1d3j5")
+shader_parameter/speed = 0.3
+shader_parameter/color_a = Color(1, 0.5, 0.8, 1)
+shader_parameter/color_b = Color(0.3, 0.6, 1, 1)
+shader_parameter/color_c = Color(0.3, 0.6, 1, 1)
+shader_parameter/scale = 2.5
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_t6tvt"]
+shader = ExtResource("1_1d3j5")
+shader_parameter/speed = 0.3
+shader_parameter/color_a = Color(1, 0.5, 0.8, 1)
+shader_parameter/color_b = Color(0.3, 0.6, 1, 1)
+shader_parameter/color_c = Color(0.3, 0.6, 1, 1)
+shader_parameter/scale = 2.5
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rrr6a"]
+shader = ExtResource("1_1d3j5")
+shader_parameter/speed = 0.3
+shader_parameter/color_a = Color(1, 0.5, 0.8, 1)
+shader_parameter/color_b = Color(0.3, 0.6, 1, 1)
+shader_parameter/color_c = Color(0.3, 0.6, 1, 1)
+shader_parameter/scale = 2.5
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_q7le6"]
+shader = ExtResource("1_1d3j5")
+shader_parameter/speed = 0.3
+shader_parameter/color_a = Color(1, 0.5, 0.8, 1)
+shader_parameter/color_b = Color(0.3, 0.6, 1, 1)
+shader_parameter/color_c = Color(0.3, 0.6, 1, 1)
+shader_parameter/scale = 2.5
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2bh4c"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pemn0"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8nsiv"]
+shader = ExtResource("1_1d3j5")
+shader_parameter/speed = 0.3
+shader_parameter/color_a = Color(1, 0.5, 0.8, 1)
+shader_parameter/color_b = Color(0.3, 0.6, 1, 1)
+shader_parameter/color_c = Color(0.3, 0.6, 1, 1)
+shader_parameter/scale = 2.5
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c5vhu"]
+size = Vector2(500, 700)
+
+[node name="card" type="Node2D"]
+z_as_relative = false
+script = ExtResource("1_rrr6a")
+metadata/_edit_vertical_guides_ = [50.0]
+metadata/_edit_horizontal_guides_ = [38.0, 311.0]
+
+[node name="Selection" type="Panel" parent="."]
+visible = false
+material = SubResource("ShaderMaterial_pemn0")
+custom_minimum_size = Vector2(530, 730)
+offset_left = -269.99997
+offset_top = -367.00003
+offset_right = 260.00003
+offset_bottom = 362.99997
+rotation = -0.005001913
+theme_override_styles/panel = SubResource("StyleBoxFlat_8nsiv")
+
+[node name="Frame" type="Panel" parent="."]
+texture_filter = 1
+custom_minimum_size = Vector2(500, 700)
+offset_left = -253.0
+offset_top = -354.0
+offset_right = 247.0
+offset_bottom = 346.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_q7le6")
+
+[node name="front" type="ColorRect" parent="Frame"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 490.0
+offset_bottom = 690.0
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Code" type="Sprite2D" parent="Frame/front"]
+texture_filter = 1
+material = SubResource("ShaderMaterial_2bh4c")
+position = Vector2(430, 339.99997)
+scale = Vector2(1, 2.5373135)
+texture = ExtResource("2_c5vhu")
+
+[node name="Icon" type="Sprite2D" parent="Frame/front"]
+material = SubResource("ShaderMaterial_t6tvt")
+position = Vector2(194, 159)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("3_rrr6a")
+
+[node name="card info" type="VBoxContainer" parent="Frame/front"]
+custom_minimum_size = Vector2(310, 333)
+layout_mode = 0
+offset_left = 40.0
+offset_top = 307.0
+offset_right = 350.0
+offset_bottom = 649.0
+
+[node name="Title" type="Label" parent="Frame/front/card info"]
+texture_filter = 1
+material = SubResource("ShaderMaterial_rrr6a")
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Peek Deck"
+
+[node name="decorative 1" type="ColorRect" parent="Frame/front/card info/Title"]
+material = SubResource("ShaderMaterial_q7le6")
+layout_mode = 0
+offset_left = 174.0
+offset_top = 18.0
+offset_right = 303.0
+offset_bottom = 29.0
+
+[node name="VSeparator" type="VSeparator" parent="Frame/front/card info"]
+material = SubResource("ShaderMaterial_rrr6a")
+custom_minimum_size = Vector2(22, 22)
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_2bh4c")
+
+[node name="HOLDER" type="Label" parent="Frame/front/card info"]
+material = SubResource("ShaderMaterial_rrr6a")
+layout_mode = 2
+theme_override_font_sizes/font_size = 72
+horizontal_alignment = 1
+
+[node name="decorative 2" type="Panel" parent="Frame/front/card info/HOLDER"]
+material = SubResource("ShaderMaterial_q7le6")
+layout_mode = 0
+offset_right = 252.0
+offset_bottom = 273.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_pemn0")
+
+[node name="Value" type="Label" parent="Frame/front/card info/HOLDER/decorative 2"]
+material = SubResource("ShaderMaterial_q7le6")
+layout_mode = 0
+theme_override_font_sizes/font_size = 200
+text = "10"
+horizontal_alignment = 1
+
+[node name="back" type="ColorRect" parent="Frame"]
+visible = false
+layout_mode = 0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 490.0
+offset_bottom = 690.0
+color = Color(0, 0, 0, 1)
+
+[node name="Icon" type="Sprite2D" parent="Frame/back"]
+material = SubResource("ShaderMaterial_t6tvt")
+position = Vector2(240, 341)
+texture = ExtResource("4_c5vhu")
+
+[node name="locked" type="ColorRect" parent="Frame"]
+visible = false
+custom_minimum_size = Vector2(500, 700)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+color = Color(0, 0, 0, 0.75686276)
+
+[node name="Lock" type="Sprite2D" parent="Frame/locked"]
+texture_filter = 1
+material = SubResource("ShaderMaterial_8nsiv")
+position = Vector2(254, 353)
+texture = ExtResource("6_q7le6")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-3, -3)
+shape = SubResource("RectangleShape2D_c5vhu")
+
+[connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]

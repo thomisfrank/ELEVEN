@@ -1,0 +1,74 @@
+[gd_scene load_steps=6 format=3 uid="uid://cylctm05yqvp8"]
+
+[ext_resource type="PackedScene" uid="uid://da8hltc5t15jk" path="res://scenes/core/background.tscn" id="1_37mct"]
+[ext_resource type="Shader" uid="uid://c6dmkelai5ev8" path="res://scripts/shaders/screen.gdshader" id="2_cqqbs"]
+[ext_resource type="Texture2D" uid="uid://dirvje7gjk7l8" path="res://assets/icons/background_icons/logo.png" id="3_rnkyv"]
+[ext_resource type="Script" uid="uid://8jys5fep1hpr" path="res://scripts/core/menu.gd" id="4_2b4nb"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5rkwa"]
+shader = ExtResource("2_cqqbs")
+shader_parameter/box_color = Color(0.8532896, 0.88502955, 0.9965219, 1)
+shader_parameter/line_color = Color(0.35, 0.35, 0.38, 1)
+shader_parameter/corner_radius = 0.5
+shader_parameter/line_thickness = 0.0010000000475
+shader_parameter/line_position1 = 0.0
+shader_parameter/line_position2 = 0.0
+shader_parameter/gleam_color = Color(1, 1, 1, 0.047058824)
+shader_parameter/gleam_speed = 0.1330000063175
+shader_parameter/gleam_width = 0.2
+shader_parameter/curvature_amount = 0.1
+shader_parameter/vignette_intensity = 0.5
+shader_parameter/vignette_softness = 0.8
+shader_parameter/dirt_intensity = 0.05
+shader_parameter/dirt_scale = 50.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rnkyv"]
+
+[node name="menu" type="Node2D"]
+script = ExtResource("4_2b4nb")
+
+[node name="background" parent="." instance=ExtResource("1_37mct")]
+
+[node name="screen" type="Panel" parent="."]
+material = SubResource("ShaderMaterial_5rkwa")
+offset_left = 114.0
+offset_top = 241.0
+offset_right = 1353.2028
+offset_bottom = 958.0
+
+[node name="Logo" type="Sprite2D" parent="screen"]
+modulate = Color(0.1882353, 0.3137255, 0.3647059, 1)
+material = SubResource("ShaderMaterial_rnkyv")
+position = Vector2(629, 365)
+scale = Vector2(2.1250002, 1.6266834)
+texture = ExtResource("3_rnkyv")
+
+[node name="PlayButton" type="Button" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 488.60138
+offset_top = 1163.0
+offset_right = 978.6014
+offset_bottom = 1444.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 200
+text = "PLAY"
+
+[node name="HowToPlayButton" type="Button" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 400.2562
+offset_top = 1705.0
+offset_right = 1066.9465
+offset_bottom = 1850.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 100
+text = "HOW to PLAY"

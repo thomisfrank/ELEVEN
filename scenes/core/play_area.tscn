@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=3 uid="uid://bx0lq1rjtjm47"]
+
+[ext_resource type="Script" uid="uid://cu7sn7dkt6m68" path="res://scripts/core/play_area.gd" id="1_y33kl"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_566bg"]
+bg_color = Color(0.11764706, 0.11764706, 0.11764706, 0.76862746)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_566bg"]
+size = Vector2(500, 700)
+
+[node name="PlayArea" type="Node2D"]
+script = ExtResource("1_y33kl")
+
+[node name="Guide" type="Panel" parent="."]
+offset_left = -248.0
+offset_top = -352.0
+offset_right = 252.0
+offset_bottom = 348.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_566bg")
+
+[node name="Area2D" type="Area2D" parent="Guide"]
+position = Vector2(247, 351)
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Guide/Area2D"]
+shape = SubResource("RectangleShape2D_566bg")

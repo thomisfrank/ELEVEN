@@ -1,0 +1,316 @@
+[gd_scene load_steps=15 format=3 uid="uid://b4ioahc1s14o0"]
+
+[ext_resource type="Shader" uid="uid://d2iyojl86eotk" path="res://scripts/shaders/metal.gdshader" id="1_f2nwf"]
+[ext_resource type="Script" uid="uid://cgc3u3k4km0dl" path="res://scripts/core/game_panel.gd" id="1_t7bom"]
+[ext_resource type="PackedScene" uid="uid://dn4px2481xmb2" path="res://scenes/core/pass.tscn" id="2_d6ui3"]
+[ext_resource type="PackedScene" uid="uid://bk01o0336flda" path="res://scenes/core/info_panel.tscn" id="3_t7bom"]
+[ext_resource type="Shader" uid="uid://c6dmkelai5ev8" path="res://scripts/shaders/screen.gdshader" id="4_d6ui3"]
+
+[sub_resource type="Shader" id="Shader_t7bom"]
+code = "shader_type canvas_item;
+
+// Parameters you can adjust in the Inspector
+uniform vec4 base_color : source_color = vec4(0.6, 0.62, 0.65, 1.0); // Basic steel grey
+uniform float shine_strength : hint_range(0.0, 1.0) = 0.2; // How bright the reflection is
+uniform float grain_amount : hint_range(0.0, 1.0) = 0.05; // Texture roughness
+uniform float texture_stretch : hint_range(1.0, 100.0) = 30.0; // Stretches noise to look like \"brushed\" metal
+uniform float shine_speed : hint_range(0.0, 2.0) = 0.1; // Speed of the moving shine
+
+// Random noise function
+float random(vec2 uv) {
+    return fract(sin(dot(uv.xy, vec2(12.9898, 78.233))) * 43758.5453123);
+}
+
+void fragment() {
+    // 1. Create the \"Brushed\" texture
+    // We stretch the UV coordinates in one direction to make the noise look like lines
+    vec2 stretched_uv = UV;
+    stretched_uv.x *= texture_stretch; 
+    float noise_value = random(floor(stretched_uv));
+    
+    // 2. Create a moving shine (sheen)
+    // This makes a diagonal light pass over the metal
+    float sheen = sin((UV.x + UV.y) * 10.0 + TIME * shine_speed);
+    sheen = smoothstep(0.0, 1.0, sheen); // Soften the edge of the shine
+    
+    // 3. Mix the colors
+    vec4 final_color = base_color;
+    
+    // Darken areas based on noise (the grain)
+    final_color.rgb -= noise_value * grain_amount; 
+    
+    // Add the shine
+    final_color.rgb += sheen * shine_strength;
+    
+    COLOR = final_color;
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mogw1"]
+shader = SubResource("Shader_t7bom")
+shader_parameter/base_color = Color(0.6, 0.62, 0.65, 1)
+shader_parameter/shine_strength = 0.062000002945
+shader_parameter/grain_amount = 0.02700000128249999
+shader_parameter/texture_stretch = 100.0
+shader_parameter/shine_speed = 0.02000000095
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4c6dq"]
+bg_color = Color(0.12041845, 0.12041847, 0.12041838, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lkswk"]
+shader = ExtResource("1_f2nwf")
+shader_parameter/base_color = Color(0.09411765, 0.09803922, 0.11372549, 0.3647059)
+shader_parameter/shine_strength = 0.0
+shader_parameter/grain_amount = 0.04400000209
+shader_parameter/texture_stretch = 82.914003890915
+shader_parameter/shine_speed = 0.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ckq83"]
+bg_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_valbs"]
+shader = ExtResource("1_f2nwf")
+shader_parameter/base_color = Color(0.09411765, 0.09803922, 0.11372549, 0.2627451)
+shader_parameter/shine_strength = 0.0
+shader_parameter/grain_amount = 0.04400000209
+shader_parameter/texture_stretch = 82.914003890915
+shader_parameter/shine_speed = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_r8re0"]
+shader = ExtResource("4_d6ui3")
+shader_parameter/box_color = Color(0.2, 0.18, 0.22, 1)
+shader_parameter/line_color = Color(0.35, 0.35, 0.38, 1)
+shader_parameter/corner_radius = 0.1
+shader_parameter/line_thickness = 0.003
+shader_parameter/line_position1 = 0.0
+shader_parameter/line_position2 = 0.0
+shader_parameter/gleam_color = Color(1, 1, 1, 0.1)
+shader_parameter/gleam_speed = 0.15
+shader_parameter/gleam_width = 0.2
+shader_parameter/curvature_amount = 0.1
+shader_parameter/vignette_intensity = 0.5
+shader_parameter/vignette_softness = 0.8
+shader_parameter/dirt_intensity = 0.05
+shader_parameter/dirt_scale = 50.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_r8re0"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_t7bom"]
+shader = ExtResource("4_d6ui3")
+shader_parameter/box_color = Color(0.2, 0.18, 0.22, 1)
+shader_parameter/line_color = Color(0.35, 0.35, 0.38, 1)
+shader_parameter/corner_radius = 0.5
+shader_parameter/line_thickness = 0.00999999977648
+shader_parameter/line_position1 = 0.33
+shader_parameter/line_position2 = 0.67
+shader_parameter/gleam_color = Color(1, 1, 1, 0.1)
+shader_parameter/gleam_speed = 0.15
+shader_parameter/gleam_width = 0.2
+shader_parameter/curvature_amount = 0.1
+shader_parameter/vignette_intensity = 0.5
+shader_parameter/vignette_softness = 0.8
+shader_parameter/dirt_intensity = 0.05
+shader_parameter/dirt_scale = 50.0
+
+[node name="GamePanel" type="Panel"]
+material = SubResource("ShaderMaterial_mogw1")
+custom_minimum_size = Vector2(1410, 700)
+anchors_preset = -1
+anchor_right = 0.17708333
+offset_left = 15.0
+offset_top = 980.0
+offset_right = 1170.0
+offset_bottom = 1680.0
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_4c6dq")
+script = ExtResource("1_t7bom")
+metadata/_edit_use_anchors_ = true
+
+[node name="Deck" type="Panel" parent="."]
+material = SubResource("ShaderMaterial_lkswk")
+layout_mode = 0
+offset_left = 950.0
+offset_top = 143.0
+offset_right = 1202.0
+offset_bottom = 496.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_ckq83")
+
+[node name="PlayArea" type="Panel" parent="."]
+material = SubResource("ShaderMaterial_lkswk")
+layout_mode = 0
+offset_left = 531.0
+offset_top = 143.0
+offset_right = 783.0
+offset_bottom = 496.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_ckq83")
+
+[node name="DiscardPile" type="Panel" parent="."]
+material = SubResource("ShaderMaterial_valbs")
+layout_mode = 0
+offset_left = 132.0
+offset_top = 143.0
+offset_right = 384.0
+offset_bottom = 496.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_ckq83")
+
+[node name="Pass" parent="." instance=ExtResource("2_d6ui3")]
+layout_mode = 0
+offset_left = 958.0
+offset_top = 554.0
+offset_right = 958.0
+offset_bottom = 554.0
+
+[node name="Player_Info_Panel" parent="." instance=ExtResource("3_t7bom")]
+layout_mode = 0
+offset_left = 733.0
+offset_top = 720.0
+offset_right = 1193.0
+offset_bottom = 905.0
+
+[node name="Opp_Info_Panel" parent="." instance=ExtResource("3_t7bom")]
+layout_mode = 0
+offset_left = 733.0
+offset_top = -204.0
+offset_right = 1193.0
+offset_bottom = -19.0
+is_player_panel = false
+
+[node name="card_desc_screen" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_r8re0")
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -567.5
+offset_top = 163.0
+offset_right = 245.5
+offset_bottom = 330.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="card_description" type="Label" parent="card_desc_screen"]
+visible = false
+custom_minimum_size = Vector2(235, 25)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -383.5
+offset_top = -71.5
+offset_right = 384.5
+offset_bottom = 69.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 0.8450385, 0.28493494, 1)
+theme_override_font_sizes/font_size = 32
+text = "Card description"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Labels" type="HBoxContainer" parent="."]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 0
+offset_left = 134.0
+offset_top = 70.0
+offset_right = 1203.0
+offset_bottom = 110.0
+
+[node name="discard" type="Label" parent="Labels"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 24
+text = "DISCARD"
+metadata/_edit_use_anchors_ = true
+
+[node name="HSeparator" type="HSeparator" parent="Labels"]
+custom_minimum_size = Vector2(286, 16)
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_r8re0")
+metadata/_edit_use_anchors_ = true
+
+[node name="play_area" type="Label" parent="Labels"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 24
+text = "PLAY AREA"
+metadata/_edit_use_anchors_ = true
+
+[node name="HSeparator2" type="HSeparator" parent="Labels"]
+custom_minimum_size = Vector2(286, 16)
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_r8re0")
+metadata/_edit_use_anchors_ = true
+
+[node name="deck" type="Label" parent="Labels"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 24
+text = "DECK"
+metadata/_edit_use_anchors_ = true
+
+[node name="count_screen" type="ColorRect" parent="Labels/deck"]
+material = SubResource("ShaderMaterial_t7bom")
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 2.967742
+anchor_right = 4.080645
+anchor_bottom = 1.1764706
+offset_left = -13.800003
+offset_top = -8.0
+
+[node name="deck_count" type="Label" parent="Labels/deck"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 2.7903225
+anchor_top = -0.1764706
+anchor_right = 3.1451614
+anchor_bottom = 1.1470588
+theme_override_colors/font_color = Color(1, 0.844, 0.27999997, 0.7294118)
+theme_override_font_sizes/font_size = 32
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="deck_count2" type="Label" parent="Labels/deck"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 3.2258065
+anchor_top = -0.1764706
+anchor_right = 3.580645
+anchor_bottom = 1.1470588
+theme_override_colors/font_color = Color(1, 0.844, 0.27999997, 0.7294118)
+theme_override_font_sizes/font_size = 32
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="deck_count3" type="Label" parent="Labels/deck"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 3.6774194
+anchor_top = -0.1764706
+anchor_right = 4.032258
+anchor_bottom = 1.1470588
+theme_override_colors/font_color = Color(1, 0.844, 0.27999997, 0.7294118)
+theme_override_font_sizes/font_size = 32
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true

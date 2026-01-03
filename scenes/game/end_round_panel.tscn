@@ -1,0 +1,458 @@
+[gd_scene load_steps=13 format=3 uid="uid://b7vcgytfecnd2"]
+
+[ext_resource type="Shader" uid="uid://d2iyojl86eotk" path="res://scripts/shaders/metal.gdshader" id="1_mlqe0"]
+[ext_resource type="Script" uid="uid://cbqte1xfvccoo" path="res://scripts/core/end_round_panel.gd" id="2_nw03v"]
+[ext_resource type="Shader" uid="uid://c6dmkelai5ev8" path="res://scripts/shaders/screen.gdshader" id="2_t7qby"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nw03v"]
+shader = ExtResource("1_mlqe0")
+shader_parameter/base_color = Color(0.6, 0.62, 0.65, 1)
+shader_parameter/shine_strength = 0.2
+shader_parameter/grain_amount = 0.05
+shader_parameter/texture_stretch = 30.0
+shader_parameter/shine_speed = 0.1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t7qby"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_t7qby"]
+shader = ExtResource("1_mlqe0")
+shader_parameter/base_color = Color(0.6, 0.62, 0.65, 1)
+shader_parameter/shine_strength = 0.2
+shader_parameter/grain_amount = 0.05
+shader_parameter/texture_stretch = 30.0
+shader_parameter/shine_speed = 0.1
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_w661o"]
+shader = ExtResource("2_t7qby")
+shader_parameter/box_color = Color(0.2, 0.18, 0.22, 1)
+shader_parameter/line_color = Color(0.35, 0.35, 0.38, 1)
+shader_parameter/corner_radius = 0.10000000475
+shader_parameter/line_thickness = 0.003
+shader_parameter/line_position1 = 0.5730000272175
+shader_parameter/line_position2 = 0.7870000373825
+shader_parameter/gleam_color = Color(1, 1, 1, 0.1)
+shader_parameter/gleam_speed = 0.15
+shader_parameter/gleam_width = 0.2
+shader_parameter/curvature_amount = 0.1
+shader_parameter/vignette_intensity = 0.5
+shader_parameter/vignette_softness = 0.8
+shader_parameter/dirt_intensity = 0.05
+shader_parameter/dirt_scale = 50.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mlqe0"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_75ddd"]
+shader = ExtResource("2_t7qby")
+shader_parameter/box_color = Color(0.2, 0.18, 0.22, 1)
+shader_parameter/line_color = Color(0.35, 0.35, 0.38, 1)
+shader_parameter/corner_radius = 0.1
+shader_parameter/line_thickness = 0.0010000000475
+shader_parameter/line_position1 = 0.33
+shader_parameter/line_position2 = 0.67
+shader_parameter/gleam_color = Color(1, 1, 1, 0.1)
+shader_parameter/gleam_speed = 0.15
+shader_parameter/gleam_width = 0.2
+shader_parameter/curvature_amount = 0.1
+shader_parameter/vignette_intensity = 0.5
+shader_parameter/vignette_softness = 0.8
+shader_parameter/dirt_intensity = 0.05
+shader_parameter/dirt_scale = 50.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_t7qby"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ymukp"]
+shader = ExtResource("2_t7qby")
+shader_parameter/box_color = Color(0.2, 0.18, 0.22, 1)
+shader_parameter/line_color = Color(0.35, 0.35, 0.38, 1)
+shader_parameter/corner_radius = 0.1
+shader_parameter/line_thickness = 0.003
+shader_parameter/line_position1 = 0.0
+shader_parameter/line_position2 = 0.0
+shader_parameter/gleam_color = Color(1, 1, 1, 0.1)
+shader_parameter/gleam_speed = 0.15
+shader_parameter/gleam_width = 0.2
+shader_parameter/curvature_amount = 0.1
+shader_parameter/vignette_intensity = 0.5
+shader_parameter/vignette_softness = 0.8
+shader_parameter/dirt_intensity = 0.05
+shader_parameter/dirt_scale = 50.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_glqo0"]
+shader = ExtResource("2_t7qby")
+shader_parameter/box_color = Color(0.05889482, 0.04998494, 0.06779496, 1)
+shader_parameter/line_color = Color(0.35, 0.35, 0.38, 1)
+shader_parameter/corner_radius = 0.1
+shader_parameter/line_thickness = 0.003
+shader_parameter/line_position1 = 0.33
+shader_parameter/line_position2 = 0.67
+shader_parameter/gleam_color = Color(1, 1, 1, 0)
+shader_parameter/gleam_speed = 0.15
+shader_parameter/gleam_width = 0.2
+shader_parameter/curvature_amount = 0.1
+shader_parameter/vignette_intensity = 0.5
+shader_parameter/vignette_softness = 0.8
+shader_parameter/dirt_intensity = 0.05
+shader_parameter/dirt_scale = 50.0
+
+[node name="END_ROUND_PANEL" type="Panel"]
+material = SubResource("ShaderMaterial_nw03v")
+offset_left = 114.0
+offset_top = 61.0
+offset_right = 114.0
+offset_bottom = 61.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_t7qby")
+script = ExtResource("2_nw03v")
+metadata/_edit_vertical_guides_ = [26.0, 1160.0]
+
+[node name="BG" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_t7qby")
+layout_mode = 0
+offset_right = 1179.0
+offset_bottom = 2495.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(1180, 2400)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 52.0
+offset_right = 1180.0
+offset_bottom = 2452.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ROUND_COUNTER" type="Panel" parent="VBoxContainer"]
+material = SubResource("ShaderMaterial_w661o")
+custom_minimum_size = Vector2(1160, 388)
+layout_mode = 2
+
+[node name="Round" type="Label" parent="VBoxContainer/ROUND_COUNTER"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.06422414
+anchor_top = 0.40200287
+anchor_right = 0.46077585
+anchor_bottom = 0.5979971
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 0.844, 0.27999997, 0.7294118)
+theme_override_font_sizes/font_size = 100
+text = "ROUND"
+metadata/_edit_use_anchors_ = true
+
+[node name="R Value 1" type="Label" parent="VBoxContainer/ROUND_COUNTER"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5737069
+anchor_top = 0.40200287
+anchor_right = 0.7849138
+anchor_bottom = 0.5979971
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 0.844, 0.27999997, 0.7294118)
+theme_override_font_sizes/font_size = 100
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="R Value 2" type="Label" parent="VBoxContainer/ROUND_COUNTER"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.7823276
+anchor_top = 0.40200287
+anchor_right = 0.9935345
+anchor_bottom = 0.5979971
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 0.844, 0.27999997, 0.7294118)
+theme_override_font_sizes/font_size = 100
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="VSeparator3" type="VSeparator" parent="VBoxContainer"]
+custom_minimum_size = Vector2(4, 118)
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_mlqe0")
+
+[node name="PlayerEndRoundHand" type="HBoxContainer" parent="VBoxContainer"]
+custom_minimum_size = Vector2(1133, 355)
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="hand_slot_1" type="ReferenceRect" parent="VBoxContainer/PlayerEndRoundHand"]
+custom_minimum_size = Vector2(250, 350)
+layout_mode = 2
+border_width = 5.0
+
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer/PlayerEndRoundHand"]
+custom_minimum_size = Vector2(40, 4)
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_mlqe0")
+
+[node name="hand_slot_2" type="ReferenceRect" parent="VBoxContainer/PlayerEndRoundHand"]
+custom_minimum_size = Vector2(250, 350)
+layout_mode = 2
+border_width = 5.0
+
+[node name="HSeparator2" type="HSeparator" parent="VBoxContainer/PlayerEndRoundHand"]
+custom_minimum_size = Vector2(40, 4)
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_mlqe0")
+
+[node name="hand_slot_3" type="ReferenceRect" parent="VBoxContainer/PlayerEndRoundHand"]
+custom_minimum_size = Vector2(250, 350)
+layout_mode = 2
+border_width = 5.0
+
+[node name="HSeparator3" type="HSeparator" parent="VBoxContainer/PlayerEndRoundHand"]
+custom_minimum_size = Vector2(40, 4)
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_mlqe0")
+
+[node name="hand_slot_4" type="ReferenceRect" parent="VBoxContainer/PlayerEndRoundHand"]
+custom_minimum_size = Vector2(250, 350)
+layout_mode = 2
+border_width = 5.0
+
+[node name="VSeparator" type="VSeparator" parent="VBoxContainer"]
+custom_minimum_size = Vector2(4, 40)
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_mlqe0")
+
+[node name="PlayerScoreScreen" type="ColorRect" parent="VBoxContainer"]
+material = SubResource("ShaderMaterial_75ddd")
+custom_minimum_size = Vector2(1131, 230)
+layout_mode = 2
+
+[node name="score_value_1" type="Label" parent="VBoxContainer/PlayerScoreScreen"]
+layout_mode = 0
+offset_left = 18.0
+offset_top = 28.0
+offset_right = 375.0
+offset_bottom = 193.0
+theme_override_colors/font_color = Color(1, 0.844, 0.27999997, 0.7294118)
+theme_override_font_sizes/font_size = 120
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="score_value_2" type="Label" parent="VBoxContainer/PlayerScoreScreen"]
+layout_mode = 0
+offset_left = 390.0
+offset_top = 28.0
+offset_right = 747.0
+offset_bottom = 193.0
+theme_override_colors/font_color = Color(1, 0.844, 0.27999997, 0.7294118)
+theme_override_font_sizes/font_size = 120
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="score_value_3" type="Label" parent="VBoxContainer/PlayerScoreScreen"]
+layout_mode = 0
+offset_left = 756.0
+offset_top = 28.0
+offset_right = 1113.0
+offset_bottom = 193.0
+theme_override_colors/font_color = Color(1, 0.844, 0.27999997, 0.7294118)
+theme_override_font_sizes/font_size = 120
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VSeparator4" type="VSeparator" parent="VBoxContainer"]
+custom_minimum_size = Vector2(4, 118)
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_mlqe0")
+
+[node name="OppEndRoundHand" type="HBoxContainer" parent="VBoxContainer"]
+custom_minimum_size = Vector2(1133, 355)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="hand_slot_1" type="ReferenceRect" parent="VBoxContainer/OppEndRoundHand"]
+custom_minimum_size = Vector2(250, 350)
+layout_mode = 2
+border_width = 5.0
+
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer/OppEndRoundHand"]
+custom_minimum_size = Vector2(40, 4)
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_t7qby")
+
+[node name="hand_slot_2" type="ReferenceRect" parent="VBoxContainer/OppEndRoundHand"]
+custom_minimum_size = Vector2(250, 350)
+layout_mode = 2
+border_width = 5.0
+
+[node name="HSeparator2" type="HSeparator" parent="VBoxContainer/OppEndRoundHand"]
+custom_minimum_size = Vector2(40, 4)
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_t7qby")
+
+[node name="hand_slot_3" type="ReferenceRect" parent="VBoxContainer/OppEndRoundHand"]
+custom_minimum_size = Vector2(250, 350)
+layout_mode = 2
+border_width = 5.0
+
+[node name="HSeparator3" type="HSeparator" parent="VBoxContainer/OppEndRoundHand"]
+custom_minimum_size = Vector2(40, 4)
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_t7qby")
+
+[node name="hand_slot_4" type="ReferenceRect" parent="VBoxContainer/OppEndRoundHand"]
+custom_minimum_size = Vector2(250, 350)
+layout_mode = 2
+border_width = 5.0
+
+[node name="VSeparator2" type="VSeparator" parent="VBoxContainer"]
+custom_minimum_size = Vector2(4, 40)
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_mlqe0")
+
+[node name="OppScoreScreen" type="ColorRect" parent="VBoxContainer"]
+material = SubResource("ShaderMaterial_75ddd")
+custom_minimum_size = Vector2(1131, 230)
+layout_mode = 2
+
+[node name="score_value_1" type="Label" parent="VBoxContainer/OppScoreScreen"]
+layout_mode = 0
+offset_left = 18.0
+offset_top = 28.0
+offset_right = 375.0
+offset_bottom = 193.0
+theme_override_colors/font_color = Color(1, 0.844, 0.27999997, 0.7294118)
+theme_override_font_sizes/font_size = 120
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="score_value_2" type="Label" parent="VBoxContainer/OppScoreScreen"]
+layout_mode = 0
+offset_left = 390.0
+offset_top = 28.0
+offset_right = 747.0
+offset_bottom = 193.0
+theme_override_colors/font_color = Color(1, 0.844, 0.27999997, 0.7294118)
+theme_override_font_sizes/font_size = 120
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="score_value_3" type="Label" parent="VBoxContainer/OppScoreScreen"]
+layout_mode = 0
+offset_left = 756.0
+offset_top = 28.0
+offset_right = 1113.0
+offset_bottom = 193.0
+theme_override_colors/font_color = Color(1, 0.844, 0.27999997, 0.7294118)
+theme_override_font_sizes/font_size = 120
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VSeparator5" type="VSeparator" parent="VBoxContainer"]
+custom_minimum_size = Vector2(4, 40)
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_mlqe0")
+
+[node name="RESULT_SCREEN" type="ColorRect" parent="VBoxContainer"]
+z_index = 4096
+material = SubResource("ShaderMaterial_ymukp")
+custom_minimum_size = Vector2(1133, 319)
+layout_mode = 2
+
+[node name="Round goes to" type="Label" parent="VBoxContainer/RESULT_SCREEN"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.20123565
+anchor_top = 0.06882591
+anchor_right = 0.79876435
+anchor_bottom = 0.42510122
+offset_top = -5.9555664
+offset_bottom = -5.9555664
+grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 0.844, 0.27999997, 0.7294118)
+theme_override_font_sizes/font_size = 64
+text = "THE ROUND GOES TO "
+
+[node name="WINNER" type="Label" parent="VBoxContainer/RESULT_SCREEN/Round goes to"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.89772725
+anchor_right = 1.0
+anchor_bottom = 1.4872471
+grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 0.844, 0.27999997, 0.7294118)
+theme_override_font_sizes/font_size = 48
+text = "OPPONENT"
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="NEW_SCORE" type="Label" parent="VBoxContainer/RESULT_SCREEN"]
+layout_mode = 0
+offset_left = 276.0
+offset_top = 208.04443
+offset_right = 947.0
+offset_bottom = 287.04443
+theme_override_colors/font_color = Color(1, 0.844, 0.27999997, 0.7294118)
+theme_override_font_sizes/font_size = 32
+text = "NEW SCORE:"
+
+[node name="score_screen" type="ColorRect" parent="VBoxContainer/RESULT_SCREEN/NEW_SCORE"]
+material = SubResource("ShaderMaterial_glqo0")
+layout_mode = 0
+offset_left = 232.0
+offset_top = -22.0
+offset_right = 673.0
+offset_bottom = 82.0
+
+[node name="new_score_v" type="Label" parent="VBoxContainer/RESULT_SCREEN/NEW_SCORE/score_screen"]
+layout_mode = 0
+offset_left = 4.0
+offset_right = 147.0
+offset_bottom = 99.95557
+theme_override_colors/font_color = Color(1, 0.844, 0.27999997, 0.7294118)
+theme_override_font_sizes/font_size = 48
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="new_score_v2" type="Label" parent="VBoxContainer/RESULT_SCREEN/NEW_SCORE/score_screen"]
+layout_mode = 0
+offset_left = 150.0
+offset_right = 293.0
+offset_bottom = 99.95557
+theme_override_colors/font_color = Color(1, 0.844, 0.27999997, 0.7294118)
+theme_override_font_sizes/font_size = 48
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="new_score_v3" type="Label" parent="VBoxContainer/RESULT_SCREEN/NEW_SCORE/score_screen"]
+layout_mode = 0
+offset_left = 294.0
+offset_right = 437.0
+offset_bottom = 99.95557
+theme_override_colors/font_color = Color(1, 0.844, 0.27999997, 0.7294118)
+theme_override_font_sizes/font_size = 48
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VSeparator6" type="VSeparator" parent="VBoxContainer"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_mlqe0")
+
+[node name="Button" type="Button" parent="VBoxContainer"]
+visible = false
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "OKAY"

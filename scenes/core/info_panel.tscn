@@ -1,0 +1,189 @@
+[gd_scene load_steps=10 format=3 uid="uid://bk01o0336flda"]
+
+[ext_resource type="Shader" uid="uid://d2iyojl86eotk" path="res://scripts/shaders/metal.gdshader" id="1_ysykg"]
+[ext_resource type="Script" path="res://scripts/core/info_panel.gd" id="2_snxms"]
+[ext_resource type="Shader" uid="uid://c6dmkelai5ev8" path="res://scripts/shaders/screen.gdshader" id="2_uu0iy"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4c6dq"]
+shader = ExtResource("1_ysykg")
+shader_parameter/base_color = Color(0.6, 0.62, 0.65, 1)
+shader_parameter/shine_strength = 0.022000001045
+shader_parameter/grain_amount = 0.0210000009975
+shader_parameter/texture_stretch = 100.0
+shader_parameter/shine_speed = 0.0890000042275
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lkswk"]
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ckq83"]
+shader = ExtResource("2_uu0iy")
+shader_parameter/box_color = Color(0.2, 0.18, 0.22, 1)
+shader_parameter/line_color = Color(0.35, 0.35, 0.38, 1)
+shader_parameter/corner_radius = 0.1
+shader_parameter/line_thickness = 0.003
+shader_parameter/line_position1 = 0.33
+shader_parameter/line_position2 = 0.67
+shader_parameter/gleam_color = Color(1, 1, 1, 0.1)
+shader_parameter/gleam_speed = 0.15
+shader_parameter/gleam_width = 0.2
+shader_parameter/curvature_amount = 0.1
+shader_parameter/vignette_intensity = 0.5
+shader_parameter/vignette_softness = 0.8
+shader_parameter/dirt_intensity = 0.05
+shader_parameter/dirt_scale = 50.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_snxms"]
+corner_radius_top_left = 100
+corner_radius_top_right = 100
+corner_radius_bottom_right = 100
+corner_radius_bottom_left = 100
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_sp5f7"]
+shader = ExtResource("2_uu0iy")
+shader_parameter/box_color = Color(0.24750486, 0.6076394, 0.96159834, 1)
+shader_parameter/line_color = Color(0, 0, 0, 1)
+shader_parameter/corner_radius = 0.0
+shader_parameter/line_thickness = 0.0010000000475
+shader_parameter/line_position1 = 0.0
+shader_parameter/line_position2 = 0.0
+shader_parameter/gleam_color = Color(1, 1, 1, 0.1)
+shader_parameter/gleam_speed = 0.15
+shader_parameter/gleam_width = 0.2
+shader_parameter/curvature_amount = 0.1
+shader_parameter/vignette_intensity = 0.5
+shader_parameter/vignette_softness = 0.8
+shader_parameter/dirt_intensity = 0.05
+shader_parameter/dirt_scale = 50.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4c263"]
+shader = ExtResource("2_uu0iy")
+shader_parameter/box_color = Color(0.08463003, 0.0754, 0.26, 1)
+shader_parameter/line_color = Color(0, 0, 0, 1)
+shader_parameter/corner_radius = 0.5
+shader_parameter/line_thickness = 0.0010000000475
+shader_parameter/line_position1 = 0.0
+shader_parameter/line_position2 = 0.0
+shader_parameter/gleam_color = Color(1, 1, 1, 0)
+shader_parameter/gleam_speed = 0.15
+shader_parameter/gleam_width = 0.2
+shader_parameter/curvature_amount = 0.1
+shader_parameter/vignette_intensity = 0.5
+shader_parameter/vignette_softness = 0.8
+shader_parameter/dirt_intensity = 0.05
+shader_parameter/dirt_scale = 50.0
+
+[node name="Info_Panel" type="Panel"]
+material = SubResource("ShaderMaterial_4c6dq")
+offset_right = 460.0
+offset_bottom = 185.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_lkswk")
+script = ExtResource("2_snxms")
+
+[node name="Score screen" type="Panel" parent="."]
+material = SubResource("ShaderMaterial_ckq83")
+layout_mode = 0
+offset_left = 25.0
+offset_top = 44.0
+offset_right = 440.0
+offset_bottom = 155.0
+
+[node name="value 01" type="Label" parent="Score screen"]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 16.0
+offset_right = 137.0
+offset_bottom = 93.0
+theme_override_colors/font_color = Color(0.92266005, 0.73006314, 0, 1)
+theme_override_font_sizes/font_size = 56
+text = "0"
+horizontal_alignment = 1
+
+[node name="value 02" type="Label" parent="Score screen"]
+layout_mode = 0
+offset_left = 141.0
+offset_top = 16.0
+offset_right = 272.0
+offset_bottom = 93.0
+theme_override_colors/font_color = Color(0.92266005, 0.73006314, 0, 1)
+theme_override_font_sizes/font_size = 56
+text = "0"
+horizontal_alignment = 1
+
+[node name="value 03" type="Label" parent="Score screen"]
+layout_mode = 0
+offset_left = 279.0
+offset_top = 16.0
+offset_right = 410.0
+offset_bottom = 93.0
+theme_override_colors/font_color = Color(0.92266005, 0.73006314, 0, 1)
+theme_override_font_sizes/font_size = 56
+text = "0"
+horizontal_alignment = 1
+
+[node name="Action 1" type="Panel" parent="."]
+material = SubResource("ShaderMaterial_4c6dq")
+layout_mode = 0
+offset_left = -50.0
+offset_top = 43.0
+offset_right = -10.0
+offset_bottom = 83.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_snxms")
+
+[node name="screen _on" type="Panel" parent="Action 1"]
+material = SubResource("ShaderMaterial_sp5f7")
+layout_mode = 0
+offset_left = 5.0
+offset_top = 6.0
+offset_right = 35.0
+offset_bottom = 36.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_snxms")
+
+[node name="screen _off" type="Panel" parent="Action 1"]
+material = SubResource("ShaderMaterial_4c263")
+layout_mode = 0
+offset_left = 5.0
+offset_top = 6.0
+offset_right = 35.0
+offset_bottom = 36.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_snxms")
+
+[node name="Action 2" type="Panel" parent="."]
+material = SubResource("ShaderMaterial_4c6dq")
+layout_mode = 0
+offset_left = -50.0
+offset_top = 115.0
+offset_right = -10.0
+offset_bottom = 155.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_snxms")
+
+[node name="screen _on" type="Panel" parent="Action 2"]
+material = SubResource("ShaderMaterial_sp5f7")
+layout_mode = 0
+offset_left = 5.0
+offset_top = 6.0
+offset_right = 35.0
+offset_bottom = 36.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_snxms")
+
+[node name="screen _off" type="Panel" parent="Action 2"]
+material = SubResource("ShaderMaterial_4c263")
+layout_mode = 0
+offset_left = 5.0
+offset_top = 6.0
+offset_right = 35.0
+offset_bottom = 36.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_snxms")
+
+[node name="Attribution" type="Label" parent="."]
+layout_mode = 0
+offset_left = 195.0
+offset_top = 4.0
+offset_right = 267.0
+offset_bottom = 38.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 24
+text = "Player"
+horizontal_alignment = 1

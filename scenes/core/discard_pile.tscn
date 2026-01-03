@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=3 uid="uid://dun7w0x4fq1ak"]
+
+[ext_resource type="Script" uid="uid://cxpoq2ixj6k54" path="res://scripts/core/discard_pile.gd" id="1_tc53h"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tc53h"]
+bg_color = Color(0.16386127, 0.1638613, 0.16386116, 0.15686275)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_566bg"]
+size = Vector2(500, 700)
+
+[node name="DiscardPile" type="Node2D"]
+script = ExtResource("1_tc53h")
+
+[node name="Guide" type="Panel" parent="."]
+offset_left = -248.0
+offset_top = -352.0
+offset_right = 252.0
+offset_bottom = 348.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_tc53h")
+
+[node name="Area2D" type="Area2D" parent="Guide"]
+position = Vector2(247, 351)
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Guide/Area2D"]
+shape = SubResource("RectangleShape2D_566bg")

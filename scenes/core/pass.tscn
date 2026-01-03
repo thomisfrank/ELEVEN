@@ -1,0 +1,54 @@
+[gd_scene load_steps=3 format=3 uid="uid://dn4px2481xmb2"]
+
+[ext_resource type="Shader" uid="uid://c6dmkelai5ev8" path="res://scripts/shaders/screen.gdshader" id="1_mo77u"]
+[ext_resource type="Script" uid="uid://bra2ia6xfsfma" path="res://scripts/core/pass.gd" id="2_pass"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_svfel"]
+shader = ExtResource("1_mo77u")
+shader_parameter/box_color = Color(0.08872575, 0.077507816, 0.099933036, 1)
+shader_parameter/line_color = Color(0.35, 0.35, 0.38, 1)
+shader_parameter/corner_radius = 0.1
+shader_parameter/line_thickness = 0.003
+shader_parameter/line_position1 = 0.0
+shader_parameter/line_position2 = 0.0
+shader_parameter/gleam_color = Color(1, 1, 1, 0.1)
+shader_parameter/gleam_speed = 0.15
+shader_parameter/gleam_width = 0.2
+shader_parameter/curvature_amount = 0.1
+shader_parameter/vignette_intensity = 0.5
+shader_parameter/vignette_softness = 0.8
+shader_parameter/dirt_intensity = 0.05
+shader_parameter/dirt_scale = 50.0
+
+[node name="Pass" type="Control"]
+script = ExtResource("2_pass")
+layout_mode = 3
+anchors_preset = 0
+
+[node name="PassButton" type="Button" parent="."]
+material = SubResource("ShaderMaterial_svfel")
+layout_mode = 0
+offset_right = 254.0
+offset_bottom = 75.0
+theme_override_font_sizes/font_size = 48
+text = "P "
+
+[node name="Label" type="Label" parent="PassButton"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -119.98636
+offset_top = -38.0
+offset_right = 119.98636
+offset_bottom = 38.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.88, 0.7238, 0.25520003, 0.78431374)
+theme_override_font_sizes/font_size = 32
+text = "pass"
+horizontal_alignment = 1
+vertical_alignment = 1

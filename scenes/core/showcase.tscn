@@ -1,0 +1,68 @@
+[gd_scene load_steps=3 format=3 uid="uid://d4lfh5s5om48x"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8qi1t"]
+bg_color = Color(0.19607843, 0.19607843, 0.19607843, 0.8235294)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xyns1"]
+
+[node name="Showcase" type="Node2D"]
+
+[node name="BG" type="Panel" parent="."]
+offset_right = 1440.0
+offset_bottom = 2556.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_8qi1t")
+
+[node name="ReferenceRect" type="ReferenceRect" parent="BG"]
+custom_minimum_size = Vector2(500, 700)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -250.0
+offset_top = -766.0
+offset_right = 250.0
+offset_bottom = -66.0
+grow_horizontal = 2
+grow_vertical = 2
+border_width = 5.0
+
+[node name="buttons" type="HBoxContainer" parent="BG"]
+custom_minimum_size = Vector2(945, 370)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -475.0
+offset_top = 311.0
+offset_right = 475.0
+offset_bottom = 681.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="ControlButton" type="Button" parent="BG/buttons"]
+custom_minimum_size = Vector2(405, 348)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 124
+text = "SWAP"
+
+[node name="HSeparator" type="HSeparator" parent="BG/buttons"]
+custom_minimum_size = Vector2(132, 4)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+theme_override_styles/separator = SubResource("StyleBoxEmpty_xyns1")
+
+[node name="CancelButton" type="Button" parent="BG/buttons"]
+custom_minimum_size = Vector2(405, 348)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 124
+text = "CANCEL"

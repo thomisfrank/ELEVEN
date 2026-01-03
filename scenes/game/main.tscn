@@ -1,0 +1,109 @@
+[gd_scene load_steps=14 format=3 uid="uid://d3oasm50mgvuo"]
+
+[ext_resource type="PackedScene" uid="uid://b4ioahc1s14o0" path="res://scenes/core/game panel.tscn" id="1_mkoeh"]
+[ext_resource type="PackedScene" uid="uid://bx0lq1rjtjm47" path="res://scenes/core/play_area.tscn" id="2_oekm8"]
+[ext_resource type="PackedScene" uid="uid://cdttgves034ia" path="res://scenes/core/player_hand.tscn" id="2_yd8kv"]
+[ext_resource type="PackedScene" uid="uid://wqrpi3gogu4i" path="res://scenes/core/opp_hand.tscn" id="4_iba00"]
+[ext_resource type="PackedScene" uid="uid://bgkm8k3l141ee" path="res://scenes/core/deck.tscn" id="4_uaf1y"]
+[ext_resource type="PackedScene" uid="uid://dun7w0x4fq1ak" path="res://scenes/core/discard_pile.tscn" id="6_discard"]
+[ext_resource type="Script" uid="uid://b21tbl0wyaq5e" path="res://scripts/core/opp_debug.gd" id="7_debug"]
+[ext_resource type="PackedScene" uid="uid://d4lfh5s5om48x" path="res://scenes/core/showcase.tscn" id="8_5v64u"]
+[ext_resource type="PackedScene" uid="uid://da8hltc5t15jk" path="res://scenes/core/background.tscn" id="9_8aysu"]
+[ext_resource type="Script" uid="uid://ct10ncur2vmb2" path="res://scripts/core/showcase.gd" id="10_mkoeh"]
+[ext_resource type="PackedScene" uid="uid://b7vcgytfecnd2" path="res://scenes/game/end_round_panel.tscn" id="11_valbs"]
+[ext_resource type="PackedScene" uid="uid://d0k1dpjsvu4m2" path="res://scenes/game/end_game_panel.tscn" id="12_mogw1"]
+[ext_resource type="Script" uid="uid://cf0si2yh7iwlp" path="res://scripts/core/game_end_panel.gd" id="13_4c6dq"]
+[ext_resource type="Script" uid="uid://b2jjrv1srqujk" path="res://scripts/core/sim_game_button.gd" id="14_0jvwq"]
+
+[node name="main" type="Node2D"]
+
+[node name="background" parent="." instance=ExtResource("9_8aysu")]
+z_index = -100
+
+[node name="GamePanel" parent="." instance=ExtResource("1_mkoeh")]
+offset_top = 977.0
+offset_bottom = 1677.0
+
+[node name="Deck" parent="." instance=ExtResource("4_uaf1y")]
+position = Vector2(1085, 1299)
+scale = Vector2(0.5, 0.5)
+
+[node name="PlayArea" parent="." instance=ExtResource("2_oekm8")]
+position = Vector2(672, 1298)
+scale = Vector2(0.5, 0.5)
+
+[node name="player_hand" parent="." instance=ExtResource("2_yd8kv")]
+CARD_WIDTH = 275
+HAND_Y_POSITION = 2200
+
+[node name="opp_hand" parent="." instance=ExtResource("4_iba00")]
+CARD_WIDTH = 275
+HAND_Y_POSITION = 350
+
+[node name="DiscardPile" parent="." instance=ExtResource("6_discard")]
+position = Vector2(274, 1299)
+scale = Vector2(0.5, 0.5)
+
+[node name="Opp Draw Debug" type="Button" parent="."]
+offset_right = 8.0
+offset_bottom = 8.0
+text = "Opp Draw Debug"
+script = ExtResource("7_debug")
+
+[node name="Opp Swap Debug" type="Button" parent="."]
+offset_top = 33.0
+offset_right = 140.0
+offset_bottom = 64.0
+text = "Opp Swap Debug"
+script = ExtResource("7_debug")
+
+[node name="Opp Peek Deck Debug" type="Button" parent="."]
+offset_left = 2.0
+offset_top = 65.0
+offset_right = 184.0
+offset_bottom = 96.0
+text = "Opp Peek Deck Debug"
+script = ExtResource("7_debug")
+
+[node name="Opp Peek Hand Debug" type="Button" parent="."]
+offset_left = 2.0
+offset_top = 97.0
+offset_right = 184.0
+offset_bottom = 128.0
+text = "Opp Peek Hand Debug"
+script = ExtResource("7_debug")
+
+[node name="Showcase" parent="." instance=ExtResource("8_5v64u")]
+visible = false
+script = ExtResource("10_mkoeh")
+
+[node name="END_ROUND_PANEL" parent="." instance=ExtResource("11_valbs")]
+visible = false
+z_index = 4096
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 149.0
+offset_right = 149.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="EndGamePanel" parent="." instance=ExtResource("12_mogw1")]
+visible = false
+z_index = 200
+offset_left = 155.0
+offset_top = 61.0
+offset_right = 1330.0
+offset_bottom = 2556.0
+script = ExtResource("13_4c6dq")
+
+[node name="Button" type="Button" parent="."]
+offset_left = 239.0
+offset_top = 47.0
+offset_right = 365.0
+offset_bottom = 89.0
+theme_override_font_sizes/font_size = 24
+text = "SIM GAME"
+script = ExtResource("14_0jvwq")
